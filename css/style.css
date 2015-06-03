@@ -6,14 +6,14 @@
 @import url(http://fonts.googleapis.com/css?family=Oswald);
 @import url(http://fonts.googleapis.com/css?family=Oswald:300);
 body{
-       font-family: 'Oswald', sans-serif;
+    font-family: 'Oswald', sans-serif;
 }
 #header{
-  background-color:#ebebeb;
-  height: 13.125em;
-  width: 100%;
+    background-color:#ebebeb;
+    height: 13.125em;
+    width: 100%;
 
- 
+
 }
 #placeur-contenu-header{
     width: 60.000em;
@@ -26,40 +26,40 @@ body{
     line-height: 13.125em;
     height: 13.125em;
     background-repeat: no-repeat;
-     float:left;
+    float:left;
 }
 #header #texte{
-     float:right;
-     width: auto;
-     margin-top:3em;
-     color:#B84926;
-     font-weight: bold;
-     font-size:2.2em;
-   
+    float:right;
+    width: auto;
+    margin-top:3em;
+    color:#B84926;
+    font-weight: bold;
+    font-size:2.2em;
+
 }
 #menu{
     width: 100%;
     height: 1.9em;
     background-color:#242A36;
     border-bottom:0.3em solid #B84926;
-      
+
 }
 #centrage-menu{
     width: 48.5em;
     margin-left:auto;
     margin-right:auto;
-   
+
 }
 #centrage-menu ul{
-   
-  
+
+
 }
 #centrage-menu ul li{
-     width: 150px;
+    width: 150px;
     display:inline-block;
     list-style-type: none;
-  
-   
+
+
 }
 #centrage-menu ul li a{
     color:white;
@@ -69,7 +69,7 @@ body{
     display:block;
     text-align: center;
     padding:0 1.5em;
-    
+
 }
 #centrage-menu ul li a:hover{    
     text-align: center;
@@ -83,7 +83,7 @@ body{
     width: 100%;
     min-height: 650px;
     padding-bottom:20px;
-    
+
 }
 #contenu{
     background-color:#ebebeb;
@@ -92,11 +92,11 @@ body{
     margin-left:auto;
     margin-right:auto;
     padding-top:50px;
-    
+
 }
 #contenu titre{
     margin-left:50px;
-    
+
     display:block;
     width: 400px;
     font-size:1.7em;
@@ -110,40 +110,138 @@ body{
     display:block;
     width: 800px;
     font-size:1em;
-    
+
 }
 #contenu texte h1{
     color:#B84826;
     font-size:1em;
     margin:10px 0;
-    
+
 }
 
 #image1 {
-   
+
     margin: 20px auto;
     display:block;
     width: 150px;
     height: 100px;
     background-image: url('../images/ftqp01.jpg');
-    
+
 }
 #partenaire-img{
-   padding-left:70px;
-   margin:20px 0;
- 
+    padding-left:70px;
+    margin:20px 0;
+
 }
 #partenaire-img img{
 
 }
 
 #footer{
-   
     border-top:0.3em solid #B84926;
     width: 100%;
     height: 4.9em;
     background-color:#242A36;
-   
+}
+#footer #copyright{
+    width: 12.938em;
+
+    color:white;
+    font-weight: 300;
+    /*margin-top:3em;*/
+    line-height: 4.9em;
+    margin-left: auto;
+    margin-right: auto;
+}
+#footer #copyright a{
+    color:#B84826;
+    text-decoration: none;
+    font-weight: 300;
+}
+/*responsive en dessous de 970px*/
+
+/*//////////////////contact.php//////////////////*/
+#page_contact{
+width: 64em;
+
+
+}
+ titre_contact{
+     display:block;
+
+   width: 170px;
+    font-size:1.7em;
+    color:#B84826;
+    margin-bottom: 20px;
 }
 
-// responsive en dessous de 970px
+form[name="page_contact"]{
+      display:block;
+}
+#form_contact{
+ 
+    width: 55%;
+   float:left;
+
+    
+}
+
+form[name="page_contact"] input[type="text"]{
+    display:block;
+    border:1px solid #242A36;
+    border-radius: 1px;
+    width: 96.5%;
+    padding:10px;
+    height:1.50em;
+    margin-bottom:1.550em;
+}
+form[name="page_contact"] input[type="email"]{
+    display:block;
+    border:1px solid #242A36;
+    width: 96.5%;
+    padding:10px;
+    border-radius:2px;
+    height:1.50em;
+    margin-bottom:1.550em;
+
+}
+form[name="page_contact"] textArea{
+    padding:10px;
+    border-radius: 2px;
+    display:block;
+    border:1px solid #333945;
+
+    width: 96.5%;
+    max-width: 100%;
+    height: 180px;
+    max-height: 180px;
+    margin-bottom:1.550em;
+}
+
+form[name="page_contact"] input[type=submit]{
+    color:green;
+    background-color:#242A36;
+    color:white;
+    border:1px solid #B84926;
+    border-radius:4px;
+    width: 100px;
+    display:block;
+    height:2em;
+    position:relative;
+    bottom:50px;
+    left:620px;
+
+}
+
+#info_contact{
+    float:right;
+    height: 200px;
+    
+    width: 40%;
+    font-weight: 300;
+    font-size:1em;
+}
+#maps{
+    clear:both;
+}
+/*///////////////////////////////////////////////*/

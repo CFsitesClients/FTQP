@@ -1,6 +1,9 @@
 <?php 
 require_once 'includes/header.php';
-
+if(isset($_POST['editeur'])){
+	$upmessage= $_POST['editeur'];	
+	$sql_message= mysqli_query($connect,"UPDATE  article SET message='$upmessage' WHERE id=1") ;	
+}
 
 
 ?>

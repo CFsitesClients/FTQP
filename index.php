@@ -1,6 +1,8 @@
 <?php 
 require_once 'includes/header.php';
 
+
+
 ?>
 
 <titre>Présentation du centre FTQP asbl.</titre>
@@ -39,9 +41,26 @@ require_once 'includes/header.php';
         - Le premier stage  consiste essentiellement en une première confrontation avec le milieu professionnel, il est centré sur le respect des règles du monde de l'entreprise et sur la mise en pratique sur chantier des apprentissages réalisés dans nos ateliers. Stage d'immersion.<br/>
         - Le deuxième stage a pour objectif d'être un tremplin vers l'emploi, une sorte de période d'essai avant la signature d'un contrat à durée indéterminée.  Stage d'achèvement.</p>
 </texte>
+<?php
 
+    
+    $query= mysqli_query($connect,"SELECT * FROM article WHERE article.id=1");
+
+while($ligne = mysqli_fetch_assoc($query)){
+    
+
+    
+
+?>
+<form action='' method="post" name='edit'>
+    <textarea name="editeur"><?php echo $ligne['message']?></textarea>
+      <input type="submit" id="submit" value="Envoyer" />
+</form>
 
 <?php 
+
+}
+
 require_once 'includes/footer.php';
 
 ?>

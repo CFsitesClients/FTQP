@@ -169,7 +169,7 @@ width: 64em;
  titre_contact{
      display:block;
 
-   width: 170px;
+   width: auto;
     font-size:1.7em;
     color:#B84826;
     margin-bottom: 20px;

@@ -86,7 +86,7 @@ body{
 
 }
 #contenu{
-    border:1px solid red;
+ 
     background-color:#ebebeb;
     width: 64em;
     height: auto;
@@ -105,7 +105,7 @@ body{
     margin-bottom: 20px;
 }
 #contenu texte{
-    border:1px solid green;
+
     font-weight: 300;
     text-align:justify;
     margin-left:9.375em;
@@ -131,6 +131,7 @@ body{
 
 }
 #partenaire-img{
+    
     padding-left:70px;
     margin:20px 0;
 

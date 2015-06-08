@@ -86,6 +86,7 @@ body{
 
 }
 #contenu{
+    border:1px solid red;
     background-color:#ebebeb;
     width: 64em;
     height: auto;
@@ -104,11 +105,12 @@ body{
     margin-bottom: 20px;
 }
 #contenu texte{
+    border:1px solid green;
     font-weight: 300;
     text-align:justify;
-    margin-left:125px;
+    margin-left:9.375em;
     display:block;
-    width: 800px;
+    width:50.000em;
     font-size:1em;
 
 }
@@ -244,4 +246,14 @@ form[name="page_contact"] input[type=submit]{
 #maps{
     clear:both;
 }
-/*///////////////////////////////////////////////*/
+/*////////////////Accueil////////////////////*/
+form[name="edit"] textArea{
+    font-weight: 300;
+    text-align:justify;
+    margin-left:9.375em;
+    display:block;
+    width:100%;
+    height: auto;
+    font-size:1em;
+}
+/*////////////////////////////////////*/

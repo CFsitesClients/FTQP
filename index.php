@@ -1,14 +1,10 @@
 <?php 
 require_once 'includes/header.php';
-if(isset($_POST['editeur'])){
-	$upmessage= $_POST['editeur'];	
-	$sql_message= mysqli_query($connect,"UPDATE  article SET message='$upmessage' WHERE id=1") ;	
-}
-
 
 ?>
 
 <titre>Présentation du centre FTQP asbl.</titre>
+
 <texte>
     Le centre de formation FTQP propose depuis le 26/03/1979 à des demandeurs d'emploi peu qualifiés de plus de 18 ans (détendeurs du CEB ou du CESI) deux formations qualifiantes dans le secteur de la construction : l'une en maçonnerie et l'autre en plafonnage.<br/><br/>
 
@@ -43,26 +39,14 @@ if(isset($_POST['editeur'])){
         Nous intégrons à nos formations des stages en entreprise (non rémunérés pour le 1er stage d'immersion) de 152 heures (4 semaines) par niveau de formation.<br/>
         - Le premier stage  consiste essentiellement en une première confrontation avec le milieu professionnel, il est centré sur le respect des règles du monde de l'entreprise et sur la mise en pratique sur chantier des apprentissages réalisés dans nos ateliers. Stage d'immersion.<br/>
         - Le deuxième stage a pour objectif d'être un tremplin vers l'emploi, une sorte de période d'essai avant la signature d'un contrat à durée indéterminée.  Stage d'achèvement.</p>
+
+
+
 </texte>
-<?php
-
-    
-    $query= mysqli_query($connect,"SELECT * FROM article WHERE article.id=1");
-
-while($ligne = mysqli_fetch_assoc($query)){
-    
-
-    
-
-?>
-<form action='' method="post" name='edit'>
-    <textarea name="editeur"><?php echo $ligne['message']?></textarea>
-      <input type="submit" id="submit" value="Envoyer" />
-</form>
 
 <?php 
 
-}
+
 
 require_once 'includes/footer.php';
 

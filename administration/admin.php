@@ -4,7 +4,7 @@ require_once '../includes/admin/connect.php';
 
 // UPDATE ACCUEIL
 if(isset($_POST['update'])){
-    $texte_acc = $_POST['texte_accueil'];
+    $texte_acc =htmlentities($_POST['texte_accueil'],ENT_QUOTES);
     $id = $_POST['id'];
     $uptexte =mysqli_query($connect, "UPDATE accueil SET message='$texte_acc' WHERE id=$id");
 }
@@ -14,15 +14,8 @@ if(isset($_POST['update'])){
 $query_select= mysqli_query($connect, "SELECT * FROM accueil");
 //FIN SELECT
 while($ligne=mysqli_fetch_assoc($query_select)){
-   
-  echo 
-    "<form action='' method='post' name='upda'>"
-    ."<textarea name='texte_accueil'>".$ligne['message']."</textarea>"
-    ."<input type='hidden' name='id' value='".$ligne['id']."'></input>"     
-    ."<input type='submit' value='Submit' name='update'></input>"      
-    ."</form>"   
-        ; 
-  }
+
+
 
 
 
@@ -48,22 +41,48 @@ if(isset($_POST['insertinto'])){
         <link type="text/css" rel="stylesheet" href="../css/admin_style.css" />
         <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
-        <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+        <script src="ckeditor/ckeditor.js"></script>
+                <script>
+            CKEDITOR.replace ('textareaId', { 
+  "filebrowserImageUploadUrl": "/imgupload/ckeditor/plugins/imgupload.php" 
+});
+            </script>
+  
         <title></title>
     </head>
     <body>
-        <div id="logo_admin"></div>
-        <div id="menu_admin">
-            <ul>
-                <li><a href="admin.php">ACCUEIL</a></li>
-                <li><a href="condition_admin.php">CONDITIONS</a></li>
-                <li><a href="galerie_admin.php">GALERIE</a></li>
-                <li><a href="aide_admin.php">AIDE</a></li>
-                <li><a href="contact_admin.php">CONTACT</a></li>
-            </ul>
+     <div id="conteneur" >
+         <div id="gauche">
+            <div id="logo_admin"></div>
+            <div id="menu_admin">
+                <ul>
+                   <li><a href="admin.php">ACCUEIL</a></li>
+                   <li><a href="condition_admin.php">CONDITIONS</a></li>
+                   <li><a href="galerie_admin.php">GALERIE</a></li>
+                   <li><a href="aide_admin.php">AIDE</a></li>
+                   <li><a href="contact_admin.php">CONTACT</a></li>
+                </ul>    
+            </div>
         </div>
-        <div id="contenu_admin">
+   
+        <div id="droite">
 
-        </div>
+             <div id="contenu_admin">
+                 
+                <?php
+                     
+                echo 
+                "<div id='index_admin'><form action='' method='post' name='upda'>"
+                ."<textarea class='ckeditor' name='texte_accueil' >".$ligne['message']."</textarea>"
+                ."<input type='hidden' name='id' value='".$ligne['id']."'></input>"     
+                ."<input type='submit' value='Submit' name='update'></input>"      
+                ."</form></div>"   
+                ; 
+                ?>
+             </div>
+        </div>  
+      </div>   
+
     </body>
 </html>
+<?php   }?>

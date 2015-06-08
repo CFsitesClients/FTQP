@@ -1,5 +1,36 @@
+body{
+
+}
+
+#conteneur{
+    margin-left:auto;
+    margin-right:auto;
+    width:1200px;
+}
+
+#gauche{
+    float:left;
+}
+#droite{
+    float:right;
+}
 #logo_admin{
     background-image:url('../images/logo/ftqp_admin.png');
     height:250px ;
     width: 291px;
+
+}
+
+
+#menu_admin{}  
+
+#index_admin{
+
+}
+#contenu_admin{
+    border:1px solid red;
+    
+}
+#contenu_admin textArea{
+
 }

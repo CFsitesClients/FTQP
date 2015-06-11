@@ -1,5 +1,7 @@
 <?php 
+$nav_en_cours = 'index';
 require_once 'includes/header.php';
+
 $query_select= mysqli_query($connect, "SELECT * FROM accueil");
 
 

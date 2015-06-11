@@ -3,32 +3,18 @@ require_once '../includes/admin/connect.php';
 
 
 // UPDATE ACCUEIL
-if(isset($_POST['texte_accueil'])){
-    $texte_acc =htmlentities($_POST['texte_accueil'],ENT_QUOTES);
+if(isset($_POST['texte_conditions'])){
+    $texte_cond =htmlentities($_POST['texte_conditions'],ENT_QUOTES);
     $id = $_POST['id'];
-    $uptexte =mysqli_query($connect, "UPDATE accueil SET message='$texte_acc' WHERE id=$id");
+    $uptexte =mysqli_query($connect, "UPDATE conditions SET message='$texte_cond' WHERE id=$id");
 }
 // fin UPDATE ACCUEIL
 
 // SELECT 
-$query_select= mysqli_query($connect, "SELECT * FROM accueil");
+$query_select= mysqli_query($connect, "SELECT * FROM conditions");
 //FIN SELECT
 while($ligne=mysqli_fetch_assoc($query_select)){
 
-
-
-
-
-// INSERT INTO ACCUEIL
-if(isset($_POST['insertinto'])){
-    $inaccueil ="INSERT INTO accueil VALUES message=''";
-     "<form action='' method='post' name=''>"
-    ."<div contenteditable='true'><textarea name=''></textarea></div>"
-    ."<input type='hidden' name='id' value=''></input>"     
-    ."<input type='submit' value='Submit' name=''></input>"      
-    ."</form>" ;
-}
-// FIN INSERT INTO
 
 
 ?>
@@ -57,8 +43,8 @@ if(isset($_POST['insertinto'])){
             <div id="logo_admin"></div>
             <div id="menu_admin">
                 <ul>
-                   <li><a href="admin.php" class="en-cours" >ACCUEIL</a></li>
-                   <li><a href="condition_admin.php">CONDITIONS</a></li>
+                   <li><a href="admin.php"  >ACCUEIL</a></li>
+                   <li><a href="condition_admin.php" class="en-cours">CONDITIONS</a></li>
                    <li><a href="galerie_admin.php">GALERIE</a></li>
                    <li><a href="aide_admin.php">AIDE</a></li>
                    <li><a href="contact_admin.php">CONTACT</a></li>
@@ -74,7 +60,7 @@ if(isset($_POST['insertinto'])){
                      
                 echo 
                 "<div id='index_admin'><form action='' method='post' name='upda'>"
-                ."<textarea class='ckeditor' name='texte_accueil' >".$ligne['message']."</textarea>"
+                ."<textarea class='ckeditor' name='texte_conditions' >".$ligne['message']."</textarea>"
                 ."<input type='hidden' name='id' value='".$ligne['id']."'></input>"     
                 ."<input type='submit' value='Editer' name='editer'></input>"      
                 ."</form></div>"   

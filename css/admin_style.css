@@ -1,5 +1,12 @@
-body{
+*{
+    padding:0;
+    margin:0;
+}
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+@import url(http://fonts.googleapis.com/css?family=Oswald:300);
 
+body{
+font-family: 'Oswald', sans-serif;
 }
 
 #conteneur{
@@ -8,29 +15,91 @@ body{
     width:1200px;
 }
 
+
 #gauche{
     float:left;
+    width: 291px;
+    
 }
-#droite{
-    float:right;
-}
+
 #logo_admin{
     background-image:url('../images/logo/ftqp_admin.png');
     height:250px ;
-    width: 291px;
 
+}
+#menu_admin{
+width: 291px;
+}  
+#menu_admin .en-cours{
+
+background-color:#242A36;
+}
+    
+#menu_admin ul{
+
+
+}
+#menu_admin ul li{
+    margin:0 auto;
+    width: 150px;
+    display:block;
+    list-style-type: none;
+
+
+}
+#menu_admin ul li a{
+ 
+    color:white;
+     border:0.1em solid ;
+    border-radius:0.2em;
+    text-decoration: none;
+    line-height: 1.9em;
+    height: 1.9em;
+    background-color:#B84826;
+    display:block;
+    margin:0.5em 0;
+    
+    text-align: center;
+    
+
+}
+#menu_admin ul li a:hover{    
+    text-align: center;
+    color:white;
+    height: 1.9em;
+    border:0.1em solid #242A36;
+    border-radius:0.2em;
+    background-color:#242A36;
+   
 }
 
 
-#menu_admin{}  
+
+
+
+#droite{
+    float:right;
+}
+
 
 #index_admin{
 
 }
 #contenu_admin{
-    border:1px solid red;
+  
     
 }
 #contenu_admin textArea{
 
+}
+
+input[name=editer]{
+    margin:2em 0;
+    background-color:#B84826;
+    font-weight:900;
+    color:white;
+    height:3em;
+    width: 7em;
+    border:0.1em solid #242A36;
+    border-radius:0.2em;
 }

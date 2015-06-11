@@ -1,6 +1,7 @@
 <?php 
+$nav_en_cours = 'contact';
 require_once 'includes/header.php';
-
+$query_select= mysqli_query($connect, "SELECT * FROM contact");
 
 if (isset($_POST['message'])) {
     
@@ -52,14 +53,13 @@ echo "    <titre_contact>Contactez Nous</titre_contact>";
     </form>
    </div>
         <div id="info_contact">
-            
-    <p>   Mr. Tahar ELHAMDAOUI, directeur :</p> 
-    <p>   Tél. : 02/533.10.76</p> 
-    <p>   Fax : 02/539.38.98</p> 
-    <p>   GSM : 0477/455.188</p> 
-    <p>   Email : ftqp.elhamdaoui@hotmail.com</p> 
-    <p>   Site : www.ispftqpconstruction.sitew.be</p> 
-            
+            <?php while($ligne=mysqli_fetch_assoc($query_select)){
+echo html_entity_decode($ligne['message']);
+
+
+}?>
+
+
         </div>
     
     

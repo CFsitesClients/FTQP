@@ -12,8 +12,6 @@ body{
     background-color:#ebebeb;
     height: 13.125em;
     width: 100%;
-
-
 }
 #placeur-contenu-header{
     width: 60.000em;
@@ -43,6 +41,9 @@ body{
     background-color:#242A36;
     border-bottom:0.3em solid #B84926;
 
+}
+#en-cours{
+     background-color:#B84826;
 }
 #centrage-menu{
     width: 48.5em;
@@ -238,8 +239,8 @@ form[name="page_contact"] input[type=submit]{
 
 #info_contact{
     float:right;
-    height: 200px;
-    
+    max-height: 200px;
+
     width: 40%;
     font-weight: 300;
     font-size:1em;

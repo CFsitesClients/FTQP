@@ -1,4 +1,5 @@
 <?php 
+$nav_en_cours = 'galerie';
 require_once 'includes/header.php';
 
 ?>

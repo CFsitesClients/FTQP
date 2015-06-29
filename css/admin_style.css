@@ -79,6 +79,8 @@ background-color:#242A36;
 
 #droite{
     float:right;
+    width: 50em;
+ 
 }
 
 
@@ -102,4 +104,57 @@ input[name=editer]{
     width: 7em;
     border:0.1em solid #242A36;
     border-radius:0.2em;
+}
+.editeur{
+    width: 50em;
+}
+#connexion{
+    
+    margin-top:33%;
+    
+}
+
+#connexion input{
+    background-color:#B84826;
+    color:white;
+    border:0.1em solid black;
+    height: 1.3em;
+    width: 7em;
+    border-radius:0.2em;
+}
+#connexion input[name="lelogin"]{
+    background-color:#B84826;
+    color:white; 
+    border:0.1em solid black;
+    height: 1.3em;
+    width: 7em;
+    border-radius:0.2em;
+}
+#connexion input[type="password"]{
+    background-color:#B84826;    
+    border:0.1em solid black;
+    height: 1.3em;
+    width: 7em;
+    border-radius:0.2em;
+}
+#connexion input[type="submit"]{
+    background-color:#B84826;
+    color:white;
+    border:0.1em solid black;
+    height: 1.3em;
+    width: 7em;
+    border-radius:0.2em;
+}
+#connexion a{
+    text-decoration: none;
+    color:black;
+}
+#connexion a:hover{
+    text-decoration: none;
+    color:#B84826;
+    border-bottom:0.3em solid #B84826;
+}
+#erreur_connex{    
+    display:inline-block;
+    color:red;
 }

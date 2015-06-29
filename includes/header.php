@@ -21,7 +21,7 @@ require_once 'admin/connect.php';
         <div id="header">
             <div id="placeur-contenu-header">
                  <div id="logo"></div>
-                 <div id="texte">Formation de Travail en Quartier Populaire</div>
+                 <div id="texte">Formation et Travail en Quartier Populaire.</div>
             </div>     
         </div>
         

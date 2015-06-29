@@ -1,76 +1,56 @@
 <?php
+session_start();
 require_once '../includes/admin/connect.php';
+require_once 'includes/header.php';
 
 
-// UPDATE ACCUEIL
-if(isset($_POST['texte_aide'])){
-    $texte_aide =htmlentities($_POST['texte_aide'],ENT_QUOTES);
+
+// UPDATE AIDE
+if(isset($_POST['content'])){
+    $texte_aide =htmlentities($_POST['content'],ENT_QUOTES);
     $id = $_POST['id'];
     $uptexte =mysqli_query($connect, "UPDATE aide SET message='$texte_aide' WHERE id=$id");
 }
-// fin UPDATE ACCUEIL
+// fin UPDATE AIDE
 
 // SELECT 
 $query_select= mysqli_query($connect, "SELECT * FROM aide");
 //FIN SELECT
+while($ligne=mysqli_fetch_assoc($query_select)){
+
+
+
+
+
+// INSERT INTO AIDE
+if(isset($_POST['insertinto'])){
+    $inaccueil ="INSERT INTO accueil VALUES message=''";
+     "<form action='' method='post' name=''>"
+    ."<div contenteditable='true'><textarea name=''></textarea></div>"
+    ."<input type='hidden' name='id' value=''></input>"     
+    ."<input type='submit' value='Submit' name=''></input>"      
+    ."</form>" ;
+}
+// FIN INSERT INTO
+
 
 ?>
 
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link type="text/css" rel="stylesheet" href="../css/admin_style.css" />
-        <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
-        <script src="ckeditor/ckeditor.js"></script>
-                <script>
-                    
-                    CKEDITOR.replace ('textareaId', { 
-                    "filebrowserImageUploadUrl": "/imgupload/ckeditor/plugins/imgupload.php" 
-                                                });
-                </script>
-  
-        <title></title>
-    </head>
-    <body>
-     <div id="conteneur" >
-         <div id="gauche">
-            <div id="logo_admin"></div>
-            <div id="menu_admin">
-                <ul>
-                   <li><a href="admin.php"  >ACCUEIL</a></li>
-                   <li><a href="condition_admin.php" >CONDITIONS</a></li>
-                   <li><a href="galerie_admin.php">GALERIE</a></li>
-                   <li><a href="aide_admin.php" class="en-cours">AIDE</a></li>
-                   <li><a href="contact_admin.php">CONTACT</a></li>
-                </ul>    
-            </div>
-        </div>
-   
-        <div id="droite">
-
-             <div id="contenu_admin">
                  
                 <?php
-                   while($ligne=mysqli_fetch_assoc($query_select)){
-
-
-
+                      if(isset($_SESSION['clef_unique'])&&$_SESSION['clef_unique']==session_id()){
+                /* formulaire d'update de la page */
                 echo 
                 "<div id='index_admin'><form action='' method='post' name='upda'>"
-                ."<textarea class='ckeditor' name='texte_aide' >".$ligne['message']."</textarea>"
+                ."<div class='editeur'><textarea id='edit' name='content'>".$ligne['message']."</textarea></div>"
                 ."<input type='hidden' name='id' value='".$ligne['id']."'></input>"     
                 ."<input type='submit' value='Editer' name='editer'></input>"      
                 ."</form></div>"   
                 ; 
-                 }  
+                }
+                else{
+                    header("Location: ./");
+                }
                 ?>
-             </div>
-        </div>  
-      </div>   
-
-    </body>
-</html>
-<?php  ?>
+  
+<?php   }require_once 'includes/footer.php';?>

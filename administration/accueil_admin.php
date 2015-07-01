@@ -27,8 +27,8 @@ if(isset($_POST['lelogin'])&& isset($_POST['lemdp'])){
 ////////////////////////////////////////
 //
 // UPDATE ACCUEIL
-if(isset($_POST['content'])){
-    $texte_acc =htmlentities($_POST['content'],ENT_QUOTES);
+if(isset($_POST['editor1'])){
+    $texte_acc =htmlentities($_POST['editor1'],ENT_QUOTES);
     $id = $_POST['id'];
     $uptexte =mysqli_query($connect, "UPDATE accueil SET message='$texte_acc' WHERE id=$id");
 }
@@ -62,12 +62,12 @@ if(isset($_POST['insertinto'])){
                 <?php 
                 
                 
-                if(isset($_SESSION['clef_unique'])&&$_SESSION['clef_unique']==session_id()){
+                if(isset($_SESSION['clef_unique'])&&$_SESSION['clef_unique']==session_id()&&$_SESSION['droit_id']==1 ){
                 /* formulaire d'update de la page */
                      
                 echo 
                 "<div id='index_admin'><form action='' method='post' name='upda'>"
-                ."<div class='editeur'><textarea id='edit' name='content'>".$ligne['message']."</textarea></div>"
+                ."<textarea name='editor1' id='editor1'>".$ligne['message']."</textarea>"
                 ."<input type='hidden' name='id' value='".$ligne['id']."'></input>"     
                 ."<input type='submit' value='Editer' name='editer'></input>"      
                 ."</form></div>"   

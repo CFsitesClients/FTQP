@@ -1,29 +1,10 @@
 <?php  
 session_start();
-require_once 'includes/header.php';
+
 require_once '../includes/admin/connect.php';
+require_once 'includes/header.php';
 
 
-////// configuration de connexion //////
-if(isset($_POST['lelogin'])&& isset($_POST['lemdp'])){   
-    $lelogin = htmlspecialchars(strip_tags($_POST['lelogin'],ENT_QUOTES));
-    $lemdp = htmlspecialchars(strip_tags($_POST['lemdp'],ENT_QUOTES));	
-    $recup_util = mysqli_query($connect,"SELECT * FROM utilisateur WHERE lelogin='$lelogin' AND  lemdp='$lemdp'; ") or die("Erreur: ".mysqli_error($connect));
-	 
-	 
-	 if(mysqli_num_rows($recup_util)){
-        $recup_tab = mysqli_fetch_assoc($recup_util);
-		$_SESSION['clef_unique']=  session_id();
-		$_SESSION['lid'] = $recup_tab['id'];
-                $_SESSION['lelogin'] = $recup_tab['lelogin'];
-                $_SESSION['lemdp'] = $recup_tab['lemdp'];	    
-		$_SESSION['droit_id'] = $recup_tab['droit_id'];
-        
-           
-    }else{
-        $erreur_connect = "Login ou mot de passe incorrecte";
-    }
-}
  if (!isset($_SESSION['clef_unique']) || $_SESSION['clef_unique']!=session_id()){
 echo "<div id='connexion'><form method='post' action=''>
 		 Connexion :<br/>

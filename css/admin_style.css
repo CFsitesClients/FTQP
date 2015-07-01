@@ -89,12 +89,16 @@ background-color:#242A36;
 }
 #contenu_admin{
   
+  position:relative;
+  right:6em;
     
 }
 #contenu_admin textArea{
 
 }
+#editor1{
 
+}
 input[name=editer]{
     margin:2em 0;
     background-color:#B84826;
@@ -105,9 +109,7 @@ input[name=editer]{
     border:0.1em solid #242A36;
     border-radius:0.2em;
 }
-.editeur{
-    width: 50em;
-}
+
 #connexion{
     
     margin-top:33%;

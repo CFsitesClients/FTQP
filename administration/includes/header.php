@@ -27,6 +27,10 @@ if(isset($_POST['lelogin'])&& isset($_POST['lemdp'])){
         <link type="text/css" rel="stylesheet" href="../css/admin_style.css" />
         <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+        <script src="../lightbox/js/jquery-1.11.0.min.js"></script>
+	<script src="../lightbox/js/lightbox.min.js"></script>
+	<link href="../lightbox/css/lightbox.css" rel="stylesheet" />
+	<link href="../galerie_lightbox.css" rel="stylesheet" />
         <script src="ckeditor/ckeditor.js"></script>
         <script>
             function supprime(id) {

@@ -16,8 +16,8 @@ $dossier_mini = "../images/miniatures/"; // dossier des miniatures
 
 
 // taille des miniatures coupÃ©es et centrÃ©es en pixels
-$mini_large = 100; // taille maximale en largeur
-$mini_haute = 120; // taille maximale en hauteur
+$mini_large = 120; // taille maximale en largeur
+$mini_haute = 100; // taille maximale en hauteur
 
 
 // qualitÃ© de l'image de la miniature (jpg de 0 Ã  100)

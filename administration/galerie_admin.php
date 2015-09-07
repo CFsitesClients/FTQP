@@ -1,10 +1,11 @@
 <?php
 session_start();
 require_once '../includes/admin/connect.php';
+require_once 'includes/header.php';
 require_once 'includes/config.php';
 require_once 'includes/fonctions.php';
-require_once 'includes/header.php';
-
+if(isset($_SESSION['clef_unique'])&&$_SESSION['clef_unique']==session_id()&&$_SESSION['droit_id']==1 ){           
+   
 // récupérations des images dans la table photo
 $sql = "SELECT p.lenom,p.letype,p.letitre,p.ladesc,
     GROUP_CONCAT(r.id) AS rubid, 
@@ -85,15 +86,16 @@ if(isset($_FILES['lefichier'])){
 // si on confirme la suppression
 if(isset($_GET['delete'])&& ctype_digit($_GET['delete'])){
     $idphoto = $_GET['delete'];
-    $idutil = $_SESSION['id'];
+    $idutil = $_SESSION['lid'];
     
     // rÃ©cupÃ©ration du nom de la photo
     $sql1="SELECT lenom, letype FROM photo WHERE id=$idphoto;";
     $nom_photo = mysqli_fetch_assoc(mysqli_query($connect,$sql1));
     
-    // supression dans la table photo_has_rubrique (sans l'utilisation de la clef Ã©trangÃ¨re)
-    $sql2="DELETE FROM photo_has_rubrique WHERE photo_id = $idphoto";
-    mysqli_query($connect,$sql2);
+//   Inutile car clef étrangère relié
+//     // supression dans la table photo_has_rubrique (sans l'utilisation de la clef Ã©trangÃ¨re)
+//    $sql2="DELETE FROM photo_has_rubrique WHERE photo_id = $idphoto";
+//    mysqli_query($connect,$sql2);
     
     // puis suppression dans la table photo
     $sql3="DELETE FROM photo WHERE id = $idphoto AND utilisateur_id = $idutil;";
@@ -105,25 +107,10 @@ if(isset($_GET['delete'])&& ctype_digit($_GET['delete'])){
     unlink($dossier_mini.$nom_photo['lenom'].".jpg");
 }
 
-
-
-$sql = "SELECT p.lenom,p.letype,p.letitre,p.ladesc,p.id,u.lelogin,
-    GROUP_CONCAT(r.id) AS rubid, 
-    GROUP_CONCAT(r.lintitule SEPARATOR '~~') AS lintitule 
-    FROM photo p    
-    INNER JOIN utilisateur u ON u.id = p.utilisateur_id
-    LEFT JOIN photo_has_rubrique h ON h.photo_id = p.id
-    LEFT JOIN rubrique r ON h.rubrique_id = r.id
-    GROUP BY p.id
-    ORDER BY p.id DESC       
-        "; 
-$recup_sql = mysqli_query($connect,$sql) or die(mysqli_error($connect));
-
-// rÃ©cupÃ©ration de toutes les rubriques pour le formulaire d'insertion
 $sql="SELECT * FROM rubrique ORDER BY lintitule ASC;";
 $recup_section = mysqli_query($connect, $sql);
 ?>
-<form action="" enctype="multipart/form-data" method="POST" name="onposte">
+<form action="galerie_admin.php" enctype="multipart/form-data" method="POST" name="onposte">
                    
                     <input type="file" name="lefichier" required /><br/>                                  
                     <input type="submit" value="Envoyer le fichier" /><br/>
@@ -134,29 +121,101 @@ $recup_section = mysqli_query($connect, $sql);
                     }
                     ?>
                 </form>
+
+<nav id="menu-section">
+    <li><a href='?section=1'>Privé</a></li> 
+     <li><a href='?section=2'>Public</a></li>
+</nav>
+
+<div id="zone-photo">
 <?php
 
+// Rubrique //
+if (!isset($_GET['section'])){
 
+$sql = "SELECT p.*, GROUP_CONCAT(r.id) AS idrub, GROUP_CONCAT(r.lintitule SEPARATOR '|||' ) AS lintitule
+    FROM photo p
+	LEFT JOIN photo_has_rubrique h ON h.photo_id = p.id
+    LEFT JOIN rubrique r ON h.rubrique_id = r.id
+        WHERE rubrique_id=1
+        GROUP BY p.id
+        ORDER BY p.id DESC
+        LIMIT 24;
+    ";
+$recup_sql = mysqli_query($connect,$sql) or die(mysqli_error($connect));
 
-
-// rÃ©cupÃ©rations des images de l'utilisateur connectÃ© dans la table photo avec leurs sections mÃªme si il n'y a pas de sections sÃ©lectionnÃ©es (jointure externe avec LEFT)
-
-///////////////////////////////////////////////////////////////////
-
- // affichez les miniatures de chaques photos dans la db par id Desc, avec le titre au dessus et la description en dessous, et affichage de la grande photo dans une nouvelle fenêtre lors du clic, Bonus : afficher lelogin de l'auteur de l'image
-               while($ligne = mysqli_fetch_assoc($recup_sql)){
-                 echo "<div class='miniatures'>";
-              
-                 echo "<a href='".CHEMIN_RACINE."ftqp/".$dossier_ori.$ligne['lenom'].".".$ligne['letype']."' target='_blank'><img src='".CHEMIN_RACINE."ftqp/".$dossier_mini.$ligne['lenom'].".jpg' alt='' /></a><br/>";
-              
+// rÃ©cupÃ©ration de toutes les rubriques pour le formulaire d'insertion
+$sql="SELECT * FROM rubrique ORDER BY lintitule ASC;";
+$recup_section = mysqli_query($connect, $sql);
+               while($ligne = mysqli_fetch_assoc($recup_sql)){   
+                   echo "<div id='affiche-photo'>";
+                 echo "<a href='".CHEMIN_RACINE."ftqp/".$dossier_ori.$ligne['lenom'].".".$ligne['letype']."' data-lightbox='groupe'><img src='".CHEMIN_RACINE."ftqp/".$dossier_mini.$ligne['lenom'].".jpg' alt='' /></a><br/>";
+                echo "<img onclick='supprime(".$ligne['id'].");' src='image_admin/supprimer.png' alt='supprimer' />";
                 echo "</div>";
-                echo "<img onclick='supprime(".$ligne['id'].");' src='image_admin/supprimer.png' alt='supprimer' />Supprimer";
-               }                
+               }   
+}
+//////////////////////////////////////////////////////
+
+if (isset($_GET['section']) && $_GET['section']==1){
+
+$sql = "SELECT p.*, GROUP_CONCAT(r.id) AS idrub, GROUP_CONCAT(r.lintitule SEPARATOR '|||' ) AS lintitule
+    FROM photo p
+	LEFT JOIN photo_has_rubrique h ON h.photo_id = p.id
+    LEFT JOIN rubrique r ON h.rubrique_id = r.id
+        WHERE rubrique_id=1
+        GROUP BY p.id
+        ORDER BY p.id DESC
+        LIMIT 24;
+    ";
+$recup_sql = mysqli_query($connect,$sql) or die(mysqli_error($connect));
+
+// rÃ©cupÃ©ration de toutes les rubriques pour le formulaire d'insertion
+$sql="SELECT * FROM rubrique ORDER BY lintitule ASC;";
+$recup_section = mysqli_query($connect, $sql);
+               while($ligne = mysqli_fetch_assoc($recup_sql)){   
+                   echo "<div id='affiche-photo'>";
+                 echo "<a href='".CHEMIN_RACINE."ftqp/".$dossier_ori.$ligne['lenom'].".".$ligne['letype']."' data-lightbox='groupe'><img src='".CHEMIN_RACINE."ftqp/".$dossier_mini.$ligne['lenom'].".jpg' alt='' /></a><br/>";
+                echo "<img onclick='supprime(".$ligne['id'].");' src='image_admin/supprimer.png' alt='supprimer' />";
+                echo "</div>";
+               }   
+}
+//////////////////////////////////////////////////////
+ if (isset($_GET['section']) && $_GET['section']==2){
 
 
-                
-           //     if(isset($_SESSION['clef_unique'])&&$_SESSION['clef_unique']==session_id()&&$_SESSION['droit_id']==1 ){}
-                
+$sql = "SELECT p.*, GROUP_CONCAT(r.id) AS idrub, GROUP_CONCAT(r.lintitule SEPARATOR '|||' ) AS lintitule
+    FROM photo p
+	LEFT JOIN photo_has_rubrique h ON h.photo_id = p.id
+    LEFT JOIN rubrique r ON h.rubrique_id = r.id
+        WHERE rubrique_id=2
+        GROUP BY p.id
+        ORDER BY p.id DESC
+        LIMIT 24;
+    ";
+$recup_sql = mysqli_query($connect,$sql) or die(mysqli_error($connect));
+
+// récupération de toutes les rubriques pour le formulaire d'insertion
+$sql="SELECT * FROM rubrique ORDER BY lintitule ASC;";
+$recup_section = mysqli_query($connect, $sql);
+               while($ligne = mysqli_fetch_assoc($recup_sql)){   
+                   echo "<div id='affiche-photo'>";
+                 echo "<a href='".CHEMIN_RACINE."ftqp/".$dossier_ori.$ligne['lenom'].".".$ligne['letype']."' data-lightbox='groupe'><img src='".CHEMIN_RACINE."ftqp/".$dossier_mini.$ligne['lenom'].".jpg' alt='' /></a><br/>";
+                echo "<img onclick='supprime(".$ligne['id'].");' src='image_admin/supprimer.png' alt='supprimer' />";
+                echo "</div>";
+               }   
+           
+ }
+// Rubrique //     
+?>
+
+
+<?php
+                     
+            
  ?>               
+</div>
+</div>    
 
-         
+<?php }else{header("Location: ./");
+
+}  ?>

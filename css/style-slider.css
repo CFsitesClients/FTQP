@@ -1,0 +1,26 @@
+@media screen and (min-width: 640px){
+@keyframes slidy {
+0% { left: 0%; }
+30% { left: 0%; }
+40% { left: -100%; }
+60% { left: -100%; }
+70% { left: -200%; }
+90% { left: -200%; }
+100% { left: 0%; }
+}
+
+
+div#slider { overflow: hidden;}
+div#slider figure img { width: 20%; float: left; }
+div#slider figure { 
+  position:relative;
+ 
+  width: 500%;
+  margin: 0;
+  left: 0;
+  text-align: left;
+  font-size: 0;
+  animation: 12s slidy infinite; 
+}
+
+}

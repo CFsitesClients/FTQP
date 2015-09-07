@@ -2,7 +2,8 @@
 session_start();
 require_once '../includes/admin/connect.php';
 require_once 'includes/header.php';
-
+     
+                if(isset($_SESSION['clef_unique'])&&$_SESSION['clef_unique']==session_id()&&$_SESSION['droit_id']==1 ){
 
 ////// configuration de connexion //////
 if(isset($_POST['lelogin'])&& isset($_POST['lemdp'])){   
@@ -61,24 +62,23 @@ if(isset($_POST['insertinto'])){
                  
                 <?php 
                 
-                
-                if(isset($_SESSION['clef_unique'])&&$_SESSION['clef_unique']==session_id()&&$_SESSION['droit_id']==1 ){
+           
                 /* formulaire d'update de la page */
                      
                 echo 
                 "<div id='index_admin'><form action='' method='post' name='upda'>"
                 ."<textarea name='editor1' id='editor1'>".$ligne['message']."</textarea>"
                 ."<input type='hidden' name='id' value='".$ligne['id']."'></input>"     
-                ."<input type='submit' value='Editer' name='editer'></input>"      
+                ."<input type='submit' value='Sauvegarder' name='editer'></input>"      
                 ."</form></div>"   
                 ; 
                 
                 ///////////fin du formulaire d'update de la page////////////////
                 }
-                else {
+                }else {
                     header("Location: ./");
                 }
                 ?>
         
 
-<?php   }require_once 'includes/footer.php';?>
+<?php   require_once 'includes/footer.php';?>

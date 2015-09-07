@@ -105,7 +105,7 @@ input[name=editer]{
     font-weight:900;
     color:white;
     height:3em;
-    width: 7em;
+    width: 8em;
     border:0.1em solid #242A36;
     border-radius:0.2em;
 }
@@ -159,4 +159,37 @@ input[name=editer]{
 #erreur_connex{    
     display:inline-block;
     color:red;
+}
+
+#menu-section{
+  
+}
+#menu-section li {
+display: inline-block;
+width: 5em;
+border: 1px solid black;
+text-align: center;
+background-color: #242A36;
+}
+#menu-section li a {
+text-decoration: none;
+color: white ;
+}
+
+
+#zone-photo{
+    width: 50.5em;
+    height: 50em;
+    border-top: 0.2em solid #242A36;
+}
+#affiche-photo{
+    margin: 1em;
+    display: inline-block;
+}
+
+#enligne{
+    color:green;
+    font-size:2em;
+    margin-top:20%;
+    text-align:center;
 }

@@ -16,8 +16,8 @@ echo "<div id='connexion'><form method='post' action=''>
 echo "ou<br/><a href='../index.php'>Retour sur le site</a></div>";
  
  }else{
-    echo 'VOUS ETES CONNECTÉ';
+    echo "<div id='enligne'>VOUS ETES CONNECTÉ</div>";
  }
-  
+
   require_once 'includes/footer.php';
   

@@ -8,25 +8,49 @@
 body{
     font-family: 'Oswald', sans-serif;
 }
-#header{
+
+
+#header{  
     background-color:#ebebeb;
-    height: 13.125em;
     width: 100%;
+    
+    
 }
 #placeur-contenu-header{
-    width: 60.000em;
+    
     margin-left:auto;
     margin-right:auto;
+    
 }
-#header #logo{
-    background-image:url('../images/logo/ftqp.png');
-    width: 18.188em;
-    line-height: 13.125em;
-    height: 13.125em;
-    background-repeat: no-repeat;
+#header #fondlogo{
+    opacity: 0.2;
+    background-color:white;    
+    z-index:2;   
+    position:absolute;
+    top:0; 
+    width: 100%;   
+    height: auto;
+     border:1px solid red;
+}
+#header #logo{    
+    //background-image: url('../images/logo/ftqp.png');
+    z-index:3;   
+    position:absolute;
+    top:0;        
     float:left;
+    width: 100%;
+    max-height: auto;
+    
 }
+#logo img{ 
+max-width: 50%; 
+}
+
 #header #texte{
+    z-index:1;   
+    position:absolute;
+    top:0;
+    margin-left:10em;   
     float:right;
     width: auto;
     margin-top:3em;
@@ -36,6 +60,7 @@ body{
 
 }
 #menu{
+     
     width: 100%;
     height: 1.9em;
     background-color:#242A36;
@@ -46,6 +71,7 @@ body{
      background-color:#B84826;
 }
 #centrage-menu{
+    
     width: 48.5em;
     margin-left:auto;
     margin-right:auto;
@@ -55,14 +81,14 @@ body{
 
 
 }
-#centrage-menu ul li{
-    width: 150px;
+#centrage-menu ul li{    
+    width: 9.375em;
     display:inline-block;
     list-style-type: none;
 
 
 }
-#centrage-menu ul li a{
+#centrage-menu ul li a{    
     color:white;
     text-decoration: none;
     line-height: 1.9em;
@@ -70,8 +96,8 @@ body{
     display:block;
     text-align: center;
     padding:0 1.5em;
-
 }
+
 #centrage-menu ul li a:hover{    
     text-align: center;
     color:white;
@@ -82,8 +108,8 @@ body{
 #conteneur{
     background-color:#ebebeb;
     width: 100%;
-    min-height: 650px;
-    padding-bottom:20px;
+    min-height: 40.625em;
+    padding-bottom:1.250em;
 
 }
 #contenu{
@@ -283,5 +309,12 @@ form[name="edit"] textArea{
     width:100%;
     height: auto;
     font-size:1em;
+}
+
+#affiche-photo{
+    margin: 0.81em;
+    
+    display: inline-block;
+
 }
 /*////////////////////////////////////*/

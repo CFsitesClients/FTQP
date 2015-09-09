@@ -24,14 +24,40 @@
 }
 
 @media screen and (max-width: 639px){
+ #menu{display:none;}   
  #header #logo{    display: none;}
  div#slider figure img {display: none;}
- #header #texte{
-    display: none;
- }
- body img{display:none;}
- 
+ #header #texte{display: none;}
+ body img{display:none;} 
+}
 
 
-   
+@media screen and (max-width: 500px){
+#footer #lien-admin{display:none;}
+#form_contact{  
+    width: 100%;
+    clear:both   ; 
+            }
+#info_contact{
+    width: 100%;
+    clear:both   ;
+    height: auto;
+    width: 100%;    
+            }
+}
+
+
+
+
+
+@media all and (max-width: 400px) {
+  #google-maps iframe {display:none}    
+  html  { }
+  nav   { height:  auto;font-size: 1.5em;  }
+  label { display: inline-block; }
+  nav ul    { display: none;  }
+  nav li    { float:   none; font-size: 1em; 
+          border-bottom: 1px solid #333;
+          background: #1a1a1a;
+        }
 }

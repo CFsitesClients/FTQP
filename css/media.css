@@ -34,7 +34,7 @@
 
 
 @media screen and (max-width: 500px){
-    #header #logo{margin-top:8%;left:33%;}
+    #header #logo{display:none}
     #footer #lien-admin{display:none;}
     #form_contact{  
         width: 100%;
@@ -46,7 +46,7 @@
         height: auto;
         width: 100%;    
     }
-    #contenu titre{margin-top:2em;}
+    #contenu titre{margin-top:1em;}
 }
 
 
@@ -54,10 +54,9 @@
 
 
 @media all and (max-width: 400px) {
-    #header #logo{    margin-top:21%;position:absolute;left:33%;width: 100%;}
     #google-maps iframe {display:none}    
     html  { }
-    #contenu titre{margin-top:4em;}
+    //#contenu titre{margin-top:1em;}
     nav   { height:  auto;font-size: 1.5em;  }
     label { display: block; }
     nav ul    { display: none;  }

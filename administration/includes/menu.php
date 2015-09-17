@@ -5,6 +5,7 @@
                    <li><a href="galerie_admin.php">GALERIE</a></li>
                    <li><a href="aide_admin.php">AIDE</a></li>
                    <li><a href="contact_admin.php">CONTACT</a></li>
+                   <li><a href="membres_admin.php">MEMBRES</a></li>
                    <li><a href="../index.php">RETOUR SITE</a></li>
                    <?php 
                    if(isset($_SESSION['clef_unique'])&&$_SESSION['clef_unique']==session_id()){
